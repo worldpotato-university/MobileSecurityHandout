@@ -1,20 +1,12 @@
 \chapter{Introduction}
 \label{chp:intro}
 
-\section{Motivation}
-\label{chp:intro:sec:motivation}
 
-Mobile Security is a part of IT-Security with the focus on Mobile Devices like smartphones or tablets. The importance of mobile security highly increased since the first touchscreen devices arrived the non-business market because more and more people are using these devices to manage their data and work. \\
-The users are getting used to organize the whole life on their smartphones. Data on the smartphone goes from private messages like SMS/MMS or E-Mails, over photos to nearly all accounts. Including social media accounts and the high sensitive (online) banking accounts. With the introduction of Google and Apple Pay, an hacker has one more option to damage the owner of the banking account. Also the handled Data is highly sensitive since it contains paying information.\\
-But mobile devices also handling business data like your time planing or confident information in your E-Mails. A lot users have their private and business data on the same device.\\
-The mobility and connectivity of modern mobile devices are a high risk. So all data should be secured in different ways.
-
-\newpage
 
 \section{Definition}
 \label{chp:intro:sec:definition}
 
-IT-Security is a generic term for a lot of different topics. Mobile security is a particular part of security with the same concerns but with focus on mobile devices.
+IT-Security is a generic term for a lot of different topics. Mobile security is a particular part of security with the same concerns but with focus on mobile devices. The rising of mobile devices started with the first mobile phones and handhelds. With arriving the first touchscreen devices and a much higher usability the number of mobile devices rised to a smartphone-penetration of 66\% in 2018. \cite{smartphone-penetration}
 
 \begin{figure}[h]
 	\includegraphics[width=\textwidth, angle=0]{img/it_security.pdf}
@@ -62,4 +54,32 @@ But there are also some more specific target. These does not fit in every use ca
 \end{description} 
 
 In a lot of cases it is a trade of between these targets. In this case it should be clear why and what it means to not fulfill the target to 100\%.
+
+\newpage
+\section{Motivation}
+\label{chp:intro:sec:motivation}
+
+Mobile devices get used for a lot of topics. Manage contact, doing phone calls and messaging are only the simplest examples. Nowadays the smartphone is used for nearly everything and became a personal assistant. That means a lot of personal data are stored on the device. Just to mention some of these data:
+
+\begin{itemize}
+	\item Identities, for social media but also for credit/customer cards or online banking.
+	\item Histories, like browser history or location history
+	\item Payments
+	\item Location
+\end{itemize}
+
+Implementing secure mobile applications can be more difficult than for a regular desktop environment because the user wants a simpler UI and an easy and fast access to their data. So it should be avoided to ask for long inputs or complicated authentication methods.\\
+\\
+A further difference to the desktop environment is the mobility of these devices. Because of that an smartphone can easily get in the wrong hands. And the connectivity of these devices is higher since they support nearly every modern interface, which can be wired but in the most time is wireless. All these interfaces open a new attack vector, which can be used to get some data or control over the device.\\
+\\
+But away from the technical background there are more reasons to secure a mobile application. \\
+\begin{itemize}
+	\item The store provider check their apps for common bugs which can lead to secure gap
+	\item Laws like \textit{GDPR} force us to secure user data
+	\item Corrupt data inside the app can destroy the user experience
+	\item Loosing data can lead to reputational damage
+	\item A exploited security issue can cost a lot of money
+	\item Your own standards
+\end{itemize}
+
 
