@@ -1,0 +1,11 @@
+\chapter{Topics to be aware of}
+\label{chp:howto}
+
+\section{Permissions}
+\label{chp:howto:sec:permissions}
+
+As the Android OS is built on top of the Linux Kernel it also comes with the permission approach of Linux. This way an application can only access a limited range of system resources by default and every access to a resource is managed by the OS.
+To get more access than the standard provided by the basic sandbox, an application must define the resources it wants to have access to in its manifest. The user gets asked to grant these permissions the first time an app wants the access. This gets saved to the device for later usage and the user doesn't have to grant it again.
+Like in Linux the permission model is a user based model and as every application is its own user every application has its own permissions. This also isolates the user resources from one another. In addition every application has to explicitly define which resources it shares with other applications.
+A good way of requesting permissions is to minimize the number of requested permissions. Simply because if an app can't do more than it should, unexpected situations won't arise. So if a permission is not required it should not be requested.
+Also self created permissions should be as few as possible and rather system defined ones should be used as while granting the permissions a user could get confused by a big list of unknown permissions.
