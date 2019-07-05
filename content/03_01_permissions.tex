@@ -9,3 +9,11 @@ To get more access than the standard provided by the basic sandbox, an applicati
 Like in Linux the permission model is a user based model and as every application is its own user every application has its own permissions. This also isolates the user resources from one another. In addition every application has to explicitly define which resources it shares with other applications.
 A good way of requesting permissions is to minimize the number of requested permissions. Simply because if an app can't do more than it should, unexpected situations won't arise. So if a permission is not required it should not be requested.
 Also self created permissions should be as few as possible and rather system defined ones should be used as while granting the permissions a user could get confused by a big list of unknown permissions.
+
+\section{Networking}
+\label{chp:howto:sec:networking}
+
+Networking with any device is always risky just because of the fact, that the data that has to be transmitted is potentially private data of the user. Any loss or "publication" of this data can harm the user and/or the trust a user has in the application. The highest endeavour should always be to keep user data secure at all times. For this reason it is important to use secure connections to any network an app wants to send data to or receive from. 
+The key to secure network traffic is to use appropriate protocols for the connections. For trivial example would be to use HTTPS over HTTP whenever the server provides it.
+On a mobile device any network connection covers an additional possible security threat, as it is frequently connected to unsecure networks via Wi-Fi. Here the threat is first that the network itself could be unsecure and second it is not known which other users are in the network and possibly have bad intentions.
+Another point is that some developer tend to use localhost ports for sending data over Inter Process Communication (IPC). This is not a good approach as these interfaces are accessible by other applications on the device and so the data could be read by the wrong process. The way to solve this is to use IPC mechanisms provided by android.
