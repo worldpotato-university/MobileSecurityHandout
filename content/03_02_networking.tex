@@ -1,0 +1,10 @@
+\chapter{Topics to be aware of}
+\label{chp:howto}
+
+\section{Networking}
+\label{chp:howto:sec:networking}
+
+Networking with any device is always risky just because of the fact, that the data that has to be transmitted is potentially private data of the user. Any loss or "publication" of this data can harm the user and/or the trust a user has in the application. The highest endeavour should always be to keep user data secure at all times. For this reason it is important to use secure connections to any network an app wants to send data to or receive from. 
+The key to secure network traffic is to use appropriate protocols for the connections. For trivial example would be to use HTTPS over HTTP whenever the server provides it.
+On a mobile device any network connection covers an additional possible security threat, as it is frequently connected to unsecure networks via Wi-Fi. Here the threat is first that the network itself could be unsecure and second it is not known which other users are in the network and possibly have bad intentions.
+Another point is that some developer tend to use localhost ports for sending data over Inter Process Communication (IPC). This is not a good approach as these interfaces are accessible by other applications on the device and so the data could be read by the wrong process. The way to solve this is to use IPC mechanisms provided by android.
