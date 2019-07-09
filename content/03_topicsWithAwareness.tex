@@ -17,3 +17,11 @@ Networking with any device is always risky just because of the fact, that the da
 The key to secure network traffic is to use appropriate protocols for the connections. For trivial example would be to use HTTPS over HTTP whenever the server provides it.
 On a mobile device any network connection covers an additional possible security threat, as it is frequently connected to unsecure networks via Wi-Fi. Here the threat is first that the network itself could be unsecure and second it is not known which other users are in the network and possibly have bad intentions.
 Another point is that some developer tend to use localhost ports for sending data over Inter Process Communication (IPC). This is not a good approach as these interfaces are accessible by other applications on the device and so the data could be read by the wrong process. The way to solve this is to use IPC mechanisms provided by android.
+
+\section{Input Validation}
+\label{chp:howto:sec:inputValidation}
+
+This topic is the most common security problem [https://developer.android.com/training/articles/security-tips] if not done correctly or not done at all. Every data an app is receiving over the network, as input from the user or from an IPC is potentially threatening even if it is not meant to be harmful in first place.
+The most common problems are buffer overflows, use after free and off-by-one errors.[] This threat can be reduced if the data gets validated.
+Type-safe languages already tend to reduce the likelihood of input validation issues. Also pointers should always be handled very carefully so that they don't point on the wrong address and when using buffers they should always be managed.
+When using queries for an SQL database there could be the issue of SQL injection that should be taken care of by using parameterized queries or limiting permissions to read-only or write-only. Another way is to use well formated data formats and verify each expected format.
