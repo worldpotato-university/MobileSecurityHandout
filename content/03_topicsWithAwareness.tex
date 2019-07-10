@@ -25,3 +25,39 @@ This topic is the most common security problem [https://developer.android.com/tr
 The most common problems are buffer overflows, use after free and off-by-one errors.[] This threat can be reduced if the data gets validated.
 Type-safe languages already tend to reduce the likelihood of input validation issues. Also pointers should always be handled very carefully so that they don't point on the wrong address and when using buffers they should always be managed.
 When using queries for an SQL database there could be the issue of SQL injection that should be taken care of by using parameterized queries or limiting permissions to read-only or write-only. Another way is to use well formated data formats and verify each expected format.
+
+\section{Handeling User Data}
+\label{chp:howto:sec:userData}
+
+Nowadays users get more and more aware that their personal data is important and that it should be handled with care. For this it is necessary to not lose the trust of the user while using an app because he wouldn't come back to it then anymore.
+One good approach to accomplish this to minimize the use of APIs where the data is sent to. If this is necessary for the functionality of the app the way to go would be to not send the plain information but a hash or a non-reversible form of the data. This way the data doesn't get exposed to third parties for services or advertisement. This approach is also valid when storing the data on the phone.
+The data could also get leaked to other apps through permissions to IPCs meaning that one app has the data and another app normaly has no permission for accessing this data but it gets it through a connection to the first app.
+Third party services or advertisement often require personal information of users to work for not obvious reasons. Here a good thing to do is not to provide that data if the developer is not sure why the service would need that information.
+
+\section{Cryptography}
+\label{chp:howto:sec:cryptography}
+
+Next to other security features that were mentioned, Android also provides a wide array of algorithms for protecting data using cryptography. So there is no need to implement your own algorithms.
+A good approach for this is to always use the highest level of the existing implementations that still support the usecase in the app. This way the developer can make the data as save as possible because the levels of security differentiate in how strong they are.
+While using these algorithms it is also important to use secure random number generators to initialize these algorithms. If in this case the developer only uses a non secure random number generator this weakens the cryptographic algorithms significantly.
+
+\section{Credentials}
+\label{chp:howto:sec:credentials}
+
+A good approach for handeling user credentials is to minimize the frequency of asking for the user credentials because asking for it a lot makes phishing attacks more likely to be successful each time.
+What is quite obvious is that the developer should never store user names or passwords on the device itself. Instead the way to go should be to initially authenticate a user and then use an authorization token.
+
+\section{Interprocess Communication}
+\label{chp:howto:sec:interprocessCommunication}
+
+This communication appears when sending data from one app to another or also from process to process within an app.
+For this Android provides a functionality using intents. These intents get sent indirectly to another app via Reference Monitor which takes care of the security in this case. When the sending process or application specifies a permission that is needed to receive the intent the Reference Monitor checks if the receiver actually has this permission and if not it cancels the communication. So the permission gets mandatory to receive this specific intent.
+These intents can be broadcasted so that every process has the chance to get it or sent directly to a receiver. If the data that has to be sent is sensitive the better approach would be to send it directly for obvious reasons.
+
+\section{Dynamically Loaded Code}
+\label{chp:howto:sec:dynamicallyLoadedCode}
+
+This is loading executable code from somewhere else which is obviously a security risk as the source is not always fully transparent and so it may be harmful.
+It is a big threat for code injection or code tampering which then can do harmful activities as it eather adds or manipulates the code of the apk.
+Dynamically loaded code can make it impossible to verify the behaviour of an app which then in the next step can make it prohibited in some environments as the code is more or less unpredictable.
+One important thing to keep in mind is that dynamically loaded code runs with the same security permissions as the app itself.
